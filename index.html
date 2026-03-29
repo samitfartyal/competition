@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan — Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #6c63ff;
+            --accent: #00e5a0;
+            --bg: #0f0f13;
+            --surface: #1a1a24;
+            --text: #e4e4ed;
+            --muted: #9393a8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(15,15,19,0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar ul {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .navbar a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover { color: var(--text); }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 5rem 0 3rem;
+            min-height: 80vh;
+        }
+
+        .hero-text { flex: 1; }
+
+        .greeting {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .role {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            color: var(--muted);
+            max-width: 440px;
+            margin-bottom: 1.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(108,99,255,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(108,99,255,0.4);
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.06);
+            transition: transform 0.3s;
+        }
+
+        .hero-img img:hover { transform: translateY(-5px) rotate(1deg); }
+
+        /* STATS */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 0 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 160px;
+            max-width: 240px;
+            text-align: center;
+            padding: 1.8rem 1rem;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(108,99,255,0.2);
+        }
+
+        .stat .number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat .label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .footer span { color: var(--accent); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; gap: 2rem; min-height: auto; }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+            .hero-img img { width: 240px; height: 240px; }
+            .stats { flex-direction: column; align-items: center; }
+            .stat { width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar container">
+        <div class="logo">Alex.dev</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#stats">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero container" id="hero">
+        <div class="hero-text">
+            <p class="greeting">Hello, I'm</p>
+            <h1><span>Alex Morgan</span></h1>
+            <p class="role">Frontend Developer</p>
+            <p>I craft clean, responsive web experiences — turning complex ideas into elegant interfaces, one pixel at a time.</p>
+            <a href="#footer" class="btn">Hire Me</a>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Profile">
+        </div>
+    </section>
+
+    <section class="stats container" id="stats">
+        <div class="stat">
+            <div class="number">2+</div>
+            <div class="label">Years Experience</div>
+        </div>
+        <div class="stat">
+            <div class="number">10+</div>
+            <div class="label">Projects Completed</div>
+        </div>
+        <div class="stat">
+            <div class="number">5+</div>
+            <div class="label">Companies Served</div>
+        </div>
+    </section>
+
+    <footer class="footer container" id="footer">
+        <p>Designed with <span>&#10084;</span> by Alex Morgan &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
